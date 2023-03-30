@@ -9,21 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var gameTableView: UITableView!
     
-    private var games: [Game] = [] 
+    private var games: [Game] = [] {
+        didSet {
+            loadingIndicator.stopAnimating()
+            loadingIndicator.isHidden = true
+            gameTableView.isHidden = false
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         gameTableView.dataSource = self
+        gameTableView.isHidden = true
+        loadingIndicator.startAnimating()
         
         gameTableView.register(UINib(nibName: "GameTableViewCell", bundle: nil), forCellReuseIdentifier: "gameTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Task { await getGames() }
+        Task {
+            await getGames()
+        }
       }
      
       func getGames() async {
