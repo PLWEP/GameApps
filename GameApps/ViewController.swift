@@ -22,8 +22,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         gameTableView.dataSource = self
+        gameTableView.delegate = self
+        
         gameTableView.isHidden = true
         loadingIndicator.startAnimating()
         
@@ -32,9 +33,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Task {
-            await getGames()
-        }
+        Task {await getGames()}
       }
      
       func getGames() async {
@@ -68,7 +67,7 @@ extension ViewController: UITableViewDataSource {
         var game = games[indexPath.row]
         cell.cellTitleLabel.text = game.name ?? "No Information"
         cell.cellDateLabel.text = "Release Date : \(game.released ?? "No Information")"
-        cell.cellRatingLabel.text = "Rating : \(game.rating ?? 0.0)"
+        cell.cellRatingLabel.text = "Rating : \(game.rating ?? 0.0) / \(game.ratingTop ?? 0)"
         
         if game.state == .new {
             cell.loadingIndicator.isHidden = false
@@ -115,5 +114,24 @@ extension UIImageView {
               }
           }
      }.resume()
+  }
+}
+
+extension ViewController: UITableViewDelegate {
+  func tableView(
+    _ tableView: UITableView,
+    didSelectRowAt indexPath: IndexPath
+  ) {
+      performSegue(withIdentifier: "moveToDetail", sender: games[indexPath.row].id)
+  }
+  override func prepare(
+    for segue: UIStoryboardSegue,
+    sender: Any?
+  ) {
+    if segue.identifier == "moveToDetail" {
+      if let detaiViewController = segue.destination as? DetailViewController {
+          detaiViewController.id = sender as? Int
+      }
+    }
   }
 }

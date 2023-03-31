@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum DownloadState {
     case new, downloaded
@@ -16,13 +15,13 @@ enum DownloadState {
 struct APIResult: Codable {
     let count: Int?
     let next: String?
-    let results: [GameResult]?
+    let results: [Game]?
 
     enum CodingKeys: String, CodingKey {
         case count, next, results
     }
     
-    init(count: Int?, next: String?, results: [GameResult]?) {
+    init(count: Int?, next: String?, results: [Game]?) {
         self.count = count
         self.next = next
         self.results = results
@@ -30,34 +29,7 @@ struct APIResult: Codable {
 }
 
 // MARK: - Result
-struct GameResult: Codable {
-    let id: Int?
-    let name: String?
-    let released: String?
-    let backgroundImage: String?
-    let rating: Double?
-    let ratingTop: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, released
-        case backgroundImage = "background_image"
-        case rating
-        case ratingTop = "rating_top"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decodeIfPresent(Int.self, forKey: .id)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
-        self.backgroundImage = try container.decodeIfPresent(String.self, forKey: .backgroundImage)
-        self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
-        self.ratingTop = try container.decodeIfPresent(Int.self, forKey: .ratingTop)
-        self.released = try container.decodeIfPresent(String.self, forKey: .released)
-    }
-}
-
-// MARK: - Game
-struct Game {
+struct Game: Codable {
     let id: Int?
     let name: String?
     let released: String?
@@ -67,6 +39,13 @@ struct Game {
     
     var state: DownloadState = .new
 
+    enum CodingKeys: String, CodingKey {
+        case id, name, released
+        case backgroundImage = "background_image"
+        case rating
+        case ratingTop = "rating_top"
+    }
+    
     init(id: Int?, name: String?, released: String?, backgroundImage: String?, rating: Double?, ratingTop: Int?) {
         self.id = id
         self.name = name
