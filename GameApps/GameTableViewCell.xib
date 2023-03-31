@@ -32,13 +32,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfB-Or-1l4">
-                        <rect key="frame" x="112" y="41.5" width="32.5" height="16"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                        <rect key="frame" x="112" y="39.5" width="30" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogd-JL-0TU">
-                        <rect key="frame" x="112" y="61.5" width="33" height="16"/>
+                        <rect key="frame" x="112" y="56" width="33" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -46,8 +46,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="3K7-hf-zoW" firstAttribute="centerX" secondItem="Q08-2p-BlQ" secondAttribute="centerX" id="06E-Jh-dgS"/>
-                    <constraint firstItem="Ogd-JL-0TU" firstAttribute="top" secondItem="CfB-Or-1l4" secondAttribute="bottom" constant="4" id="1nW-fx-e8E"/>
-                    <constraint firstItem="CfB-Or-1l4" firstAttribute="top" secondItem="519-mq-tRx" secondAttribute="bottom" constant="4" id="ArT-EQ-Doy"/>
+                    <constraint firstItem="Ogd-JL-0TU" firstAttribute="top" secondItem="CfB-Or-1l4" secondAttribute="bottom" constant="2" id="1nW-fx-e8E"/>
+                    <constraint firstItem="CfB-Or-1l4" firstAttribute="top" secondItem="519-mq-tRx" secondAttribute="bottom" constant="2" id="ArT-EQ-Doy"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="519-mq-tRx" secondAttribute="trailing" constant="8" id="Igb-d7-zf9"/>
                     <constraint firstItem="3K7-hf-zoW" firstAttribute="centerY" secondItem="Q08-2p-BlQ" secondAttribute="centerY" id="N2x-NI-ME1"/>
                     <constraint firstItem="Ogd-JL-0TU" firstAttribute="leading" secondItem="Q08-2p-BlQ" secondAttribute="trailing" constant="4" id="RkP-kr-MJq"/>

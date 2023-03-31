@@ -35,7 +35,6 @@ struct Game: Codable {
     let released: String?
     let backgroundImage: String?
     let rating: Double?
-    let ratingTop: Int?
     
     var state: DownloadState = .new
 
@@ -43,15 +42,13 @@ struct Game: Codable {
         case id, name, released
         case backgroundImage = "background_image"
         case rating
-        case ratingTop = "rating_top"
     }
     
-    init(id: Int?, name: String?, released: String?, backgroundImage: String?, rating: Double?, ratingTop: Int?) {
+    init(id: Int?, name: String?, released: String?, backgroundImage: String?, rating: Double?) {
         self.id = id
         self.name = name
         self.released = released
         self.backgroundImage = backgroundImage
         self.rating = rating
-        self.ratingTop = ratingTop
     }
 }

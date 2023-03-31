@@ -67,7 +67,7 @@ extension ViewController: UITableViewDataSource {
         var game = games[indexPath.row]
         cell.cellTitleLabel.text = game.name ?? "No Information"
         cell.cellDateLabel.text = "Release Date : \(game.released ?? "No Information")"
-        cell.cellRatingLabel.text = "Rating : \(game.rating ?? 0.0) / \(game.ratingTop ?? 0)"
+        cell.cellRatingLabel.text = "Rating : \(game.rating ?? 0.0)"
         
         if game.state == .new {
             cell.loadingIndicator.isHidden = false

@@ -58,7 +58,7 @@ extension NetworkService {
     input results: [Game]
   ) -> [Game] {
     return results.map { result in
-        return Game(id: result.id, name: result.name, released: result.released, backgroundImage: result.backgroundImage, rating: result.rating, ratingTop: result.ratingTop)
+        return Game(id: result.id, name: result.name, released: result.released, backgroundImage: result.backgroundImage, rating: result.rating)
     }
   }
 }
