@@ -3,6 +3,7 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,28 +27,44 @@
                         <rect key="frame" x="48" y="38" width="20" height="20"/>
                     </activityIndicatorView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="519-mq-tRx">
-                        <rect key="frame" x="112" y="17" width="43.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <rect key="frame" x="112" y="17" width="39" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfB-Or-1l4">
-                        <rect key="frame" x="112" y="39.5" width="30" height="14.5"/>
+                        <rect key="frame" x="112" y="37" width="30" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogd-JL-0TU">
-                        <rect key="frame" x="112" y="56" width="33" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="112" y="53.5" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sT9-by-iUF">
+                        <rect key="frame" x="112" y="70" width="30" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="IBc-9q-Ry5"/>
+                            <constraint firstAttribute="width" constant="30" id="eht-Jb-Cwl"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="tinted">
+                            <imageReference key="image" image="star" catalog="system" symbolScale="small"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="addToFavorite:" destination="A1C-HC-N2g" eventType="touchUpInside" id="yhh-tJ-gSZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="3K7-hf-zoW" firstAttribute="centerX" secondItem="Q08-2p-BlQ" secondAttribute="centerX" id="06E-Jh-dgS"/>
                     <constraint firstItem="Ogd-JL-0TU" firstAttribute="top" secondItem="CfB-Or-1l4" secondAttribute="bottom" constant="2" id="1nW-fx-e8E"/>
+                    <constraint firstItem="sT9-by-iUF" firstAttribute="top" secondItem="Ogd-JL-0TU" secondAttribute="bottom" constant="2" id="8HS-HY-Bd6"/>
                     <constraint firstItem="CfB-Or-1l4" firstAttribute="top" secondItem="519-mq-tRx" secondAttribute="bottom" constant="2" id="ArT-EQ-Doy"/>
+                    <constraint firstItem="sT9-by-iUF" firstAttribute="leading" secondItem="Q08-2p-BlQ" secondAttribute="trailing" constant="4" id="Gf5-yN-p7r"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="519-mq-tRx" secondAttribute="trailing" constant="8" id="Igb-d7-zf9"/>
                     <constraint firstItem="3K7-hf-zoW" firstAttribute="centerY" secondItem="Q08-2p-BlQ" secondAttribute="centerY" id="N2x-NI-ME1"/>
                     <constraint firstItem="Ogd-JL-0TU" firstAttribute="leading" secondItem="Q08-2p-BlQ" secondAttribute="trailing" constant="4" id="RkP-kr-MJq"/>
@@ -59,10 +76,12 @@
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CfB-Or-1l4" secondAttribute="trailing" constant="8" id="dec-bD-6mA"/>
                     <constraint firstItem="519-mq-tRx" firstAttribute="top" secondItem="GbZ-BK-nNz" secondAttribute="topMargin" constant="6" id="iMN-EY-LNH"/>
                     <constraint firstItem="519-mq-tRx" firstAttribute="leading" secondItem="Q08-2p-BlQ" secondAttribute="trailing" constant="4" id="jfP-uo-JcZ"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sT9-by-iUF" secondAttribute="trailing" constant="8" id="uKo-7M-bNj"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cellDateLabel" destination="CfB-Or-1l4" id="YkB-xh-Dz6"/>
+                <outlet property="cellFavoriteButton" destination="sT9-by-iUF" id="vQM-hq-on6"/>
                 <outlet property="cellImageView" destination="Q08-2p-BlQ" id="Ggv-h5-nzC"/>
                 <outlet property="cellRatingLabel" destination="Ogd-JL-0TU" id="y31-0w-aHr"/>
                 <outlet property="cellTitleLabel" destination="519-mq-tRx" id="mUw-3D-yGR"/>
@@ -71,4 +90,7 @@
             <point key="canvasLocation" x="457.5" y="-70.774647887323951"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
 </document>

@@ -55,5 +55,5 @@ class DetailViewController: UIViewController {
         } catch {
           fatalError("Error: connection failed.")
         }
-      }
+    }
 }

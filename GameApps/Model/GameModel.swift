@@ -37,6 +37,7 @@ struct Game: Codable {
     let rating: Double?
     
     var state: DownloadState = .new
+    var isFavorite : Bool = false
 
     enum CodingKeys: String, CodingKey {
         case id, name, released
@@ -50,5 +51,14 @@ struct Game: Codable {
         self.released = released
         self.backgroundImage = backgroundImage
         self.rating = rating
+    }
+    
+    init(id: Int?, name: String?, released: String?, backgroundImage: String?, rating: Double?, isFavorite: Bool) {
+        self.id = id
+        self.name = name
+        self.released = released
+        self.backgroundImage = backgroundImage
+        self.rating = rating
+        self.isFavorite = isFavorite
     }
 }
