@@ -90,6 +90,24 @@ class FavoriteProvider {
       }
     }
   }
+    
+  func isDataExist(_ id: Int, completion: @escaping(Bool) -> Void) {
+    let taskContext = newTaskContext()
+    taskContext.perform {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "GameData")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "id == \(id)")
+        do {
+            if let result = try taskContext.fetch(fetchRequest).first  {
+                let isStore = result.value(forKeyPath: "isFavorite") as! Bool
+                completion(isStore)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+ }
+    
 
   func deleteFavorite(_ id: Int, completion: @escaping() -> Void) {
     let taskContext = newTaskContext()

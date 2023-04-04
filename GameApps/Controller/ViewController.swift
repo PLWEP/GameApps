@@ -35,18 +35,31 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Task {await getGames()}
+        loadData()
       }
+    
+    private func loadData() {
+        Task {await getGames()}
+    }
      
       func getGames() async {
         let network = NetworkService()
         do {
           games = try await network.getGames()
+          validateGame()
           gameTableView.reloadData()
         } catch {
           fatalError("Error: connection failed.")
         }
       }
+    
+    func validateGame() {
+        for (index, game) in games.enumerated() {
+            favoriteProvider.isDataExist(game.id!) { result in
+                self.games[index].isFavorite = result
+            }
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -97,9 +110,13 @@ extension ViewController: UITableViewDataSource {
         game.isFavorite = !game.isFavorite
         
         if game.isFavorite {
-            favoriteProvider.addFavorite(game.id!, game.name!,  game.released!, game.backgroundImage!, game.rating!, game.isFavorite) {}
+            favoriteProvider.addFavorite(game.id!, game.name!,  game.released!, game.backgroundImage!, game.rating!, game.isFavorite) {
+                self.validateGame()
+            }
         } else {
-            favoriteProvider.deleteFavorite(game.id!) {}
+            favoriteProvider.deleteFavorite(game.id!) {
+                self.validateGame()
+            }
         }
    }
 }
