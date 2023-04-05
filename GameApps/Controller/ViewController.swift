@@ -16,9 +16,11 @@ class ViewController: UIViewController {
     
     private var games: [Game] = [] {
         didSet {
-            loadingIndicator.stopAnimating()
-            loadingIndicator.isHidden = true
-            gameTableView.isHidden = false
+            DispatchQueue.main.async {
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                self.gameTableView.isHidden = false
+            }
         }
     }
     override func viewDidLoad() {
